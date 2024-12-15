@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <title>preprocessors</title>
+</head>
+<body class="container">
+<a href='../index.html'>home</a>
+<script src="../prism.js"></script>
+<h1>  preprocessors  </h1>
+<hr>
+<p>Preprocessors are used to make writing code easier by enabling macros and other utilities like splitting a string across several lines using a \<br />
+we can see the expansion of macros in c using the -E flag</p>
+<pre><code class="language-bash">    gcc -E source_file.c -o output_file.i
+</code></pre>
+<p>this will just run the preprocessor and enable use to see the actual input to our compiler<br />
+<a href="https://www.youtube.com/watch?v=t5JtyDlESns">Great video on c preprocessors</a></p>
+<p>even an empty file</p>
+<pre><code class="language-c">void main() {
+}
+</code></pre>
+<p>the preprocessed file looks like this</p>
+<pre><code class="language-c"># 0 &quot;empty.c&quot;
+# 0 &quot;&lt;built-in&gt;&quot;
+# 0 &quot;&lt;command-line&gt;&quot;
+# 1 &quot;/usr/include/stdc-predef.h&quot; 1 3 4
+# 0 &quot;&lt;command-line&gt;&quot; 2
+# 1 &quot;empty.c&quot;
+void main() {
+}
+</code></pre>
+<p>these are the default preprocessor actions, atleast for gcc</p>
+<p>but if you include &lt;stdio.h&gt;</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#define PI 3.141459
+
+int main() {
+    printf(&quot;%d&quot;, PI);
+    return 0;
+}
+</code></pre>
+<p>the resultant preprocessed file is over <strong>700 lines</strong>!!! now that is interesting</p>
+<p>constants are directly replaced<br />
+io.c</p>
+<pre><code class="language-c">#define FIVE 5
+int main() {
+    int a = FIVE;
+    int b = a+4;
+    return 0;
+}
+</code></pre>
+<p>io_pre.i</p>
+<pre><code class="language-c"># 0 &quot;io.c&quot;
+# 0 &quot;&lt;built-in&gt;&quot;
+# 0 &quot;&lt;command-line&gt;&quot;
+# 1 &quot;/usr/include/stdc-predef.h&quot; 1 3 4
+# 0 &quot;&lt;command-line&gt;&quot; 2
+# 1 &quot;io.c&quot;
+
+int main() {
+    int a = 5;
+    int b = a+4;
+    return 0;
+}
+</code></pre>
+<p>lua does not have preprocessors it would be interesting project to try to add preprocessing to the lua compiler</p>
+
+</body>
+</html>
