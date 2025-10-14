@@ -1,4 +1,8 @@
-> running stuff in the background at a specified time is awesome
+```toml
+title = "running stuff in the background is fun"
+tags = ["linux","cli"] 
+date = 2024-05-13
+```
 
 I forget to backup my files and so i use cron to do it for me.  
 Here is a basic rundown- 

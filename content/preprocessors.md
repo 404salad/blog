@@ -1,3 +1,8 @@
+```toml
+title = "The C Preprocessor"
+tags = ["C","compiler"] 
+date = 2025-04-20
+```
 Preprocessors are used to make writing code easier by enabling macros and other utilities like splitting a string across several lines using a \  
 we can see the expansion of macros in c using the -E flag  
 ```bash

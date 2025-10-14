@@ -1,3 +1,8 @@
+```toml
+title = "The Lua Source Code"
+tags = ["lua","compiler"]
+date = 2025-04-20
+```
 here are some fun tidbits i found while skimming through the lua source code 
 ### type casting macros
 lua has defined macros for type casting which make the code way cleaner and makes type casting way more usable  
